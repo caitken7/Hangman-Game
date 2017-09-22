@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Hangman-Game</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+	
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+	<div class="imgcontainer">
+		<div class="container">
+			<div id="stache"></div>
+			<h1>Hipster Hangman</h1>
+			<h2>I'm thinking of a such a rad word...</h2>
+			<h2 id="prompt"></h2>
+			<h2><span id="right"></span></h2>
+			<h2>Wrong letters: <span id="wrong"></span></h2>
+			<h2>Lives left: <span id="lives"></span></h2>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+//		
+//		var wordLengthText = document.getElementById("word-length");
+//		var guessedLettersText = document.getElementById("guessed-letters");
+//		var correctGuessesText = document.getElementById("correct-guesses");
+//		var trieslivesingText = document.getElementById("tries-livesing");
+//		
+//		//update text
+//		function update() {
+//			correctGuessesText.textContent =  correctGuesses;
+//			wordLengthText.textContent = wordLength;
+//			guessedLettersText.textContent = guesses;
+//			trieslivesingText.textContent = lives;
+//			}
+//			update();
+//		
+      var words = ['amazeballs', 'austin', 'yolo', 'cardigan', 'moustache', 'kale', 'organic', 'vaporwave', 'bicycle'];
+      var game = {
+        guessed: [],
+        left: 10,
+        start: function() {
+          this.complete = false;
+          this.word = words[Math.floor(Math.random() * words.length)];
+          this.$right = document.getElementById('right');
+          this.$wrong = document.getElementById('wrong');
+          this.$lives = document.getElementById('lives');
+          this.$right.innerHTML = '_'.repeat(this.word.length);
+        },
+        guess: function(letter) {
+          if (this.left > 0 && this.complete != true) {
+            if (this.word.indexOf(letter) > -1 || this.guessed.indexOf(letter) > -1) {
+              this.right(letter);
+            } else {
+              this.wrong(letter);
+            }
+          }
+        },
+        right: function(letter) {
+          for(var i = 0; i < this.word.length; i++) {
+            if (this.word[i] == letter) {
+              var word = this.$right.innerHTML.split('');
+              word[i] = letter;
+              this.$right.innerHTML = word.join('');
+            }
+          }
+          if (this.$right.innerHTML.indexOf('_') < 0) {
+            alert('you win!');
+            this.complete = true;
+          }
+        },
+        wrong: function(letter) {
+          this.guessed.push(letter);
+          this.$wrong.innerHTML += ' ' + letter;
+          this.left--;
+          this.$lives.innerHTML = this.left;
+          if (this.left < 1) {
+            alert('you lose! '+ this.word);
+            this.complete = true;
+          }
+        }
+      };
+      game.start();
+      document.onkeyup = function(event) {
+        var letter = String.fromCharCode(event.keyCode).toLowerCase();
+        game.guess(letter);
+      };
+		
+		
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html{
+    min-height:100%;
+    position:relative;
+}
+
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  color:white;
+  height:100%;
+  width: 100%;
+  text-align:center;
+  font-size:50px;
+  background:  url('https://avante.biz/wp-content/uploads/Mustache-Wallpaper/Mustache-Wallpaper-019.jpg');
+  background-position: center top;
+	background-repeat: no-repeat;
+}
+
+h1, h2{
+	line-height: 100px;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 70px
+}
+h2 {
+	  font-size:40px;
+}
+
+.imgcontainer {
+	position: absolute;
+	top: 0;
+	bottom:0;
+    left:0;
+    right:0;
+    overflow:hidden;
+	margin:0 auto;
+	padding: 40px 20px;
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),  url('https://i.pinimg.com/736x/28/c0/1e/28c01eb196e896376072f9d35659e2cb--hipster-things-funny-things.jpg');;
+	height: 100%;
+	width: 700px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+#right {
+	letter-spacing: 20px;
+}
