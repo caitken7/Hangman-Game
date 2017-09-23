@@ -53,6 +53,7 @@
           this.$right = document.getElementById('right');
           this.$wrong = document.getElementById('wrong');
           this.$lives = document.getElementById('lives');
+		  this.$lives.innerHTML = 10;
           this.$right.innerHTML = '_'.repeat(this.word.length);
         },
         guess: function(letter) {
@@ -73,7 +74,7 @@
             }
           }
           if (this.$right.innerHTML.indexOf('_') < 0) {
-            alert('you win!');
+            setTimeout(function() { alert('You win!');}, 50);
             this.complete = true;
           }
         },
@@ -83,7 +84,7 @@
           this.left--;
           this.$lives.innerHTML = this.left;
           if (this.left < 1) {
-            alert('you lose! '+ this.word);
+			setTimeout(function() { alert('You lose! I was thinking of "'+ game.word + '".');}, 50);
             this.complete = true;
           }
         }
